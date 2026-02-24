@@ -1,144 +1,275 @@
-<style>
-  :root {
-    --primary: #1e3a8a;       /* أزرق غامق للنصوص الرئيسية */
-    --secondary: #e6f0ff;     /* أزرق فاتح للخلفيات */
-    --accent: #60c3b0;        /* أخضر فاتح للأزرار والتفاصيل */
-    --text: #0f172a;          /* لون نص داكن للوضوح */
-    --card-bg: #ffffff;
-  }
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مشورة | Mashura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0a3d62;       /* أزرق داكن */
+      --secondary: #e0f7fa;     /* أزرق فاتح للخلفية */
+      --accent: #26a69a;        /* أخضر فاتح */
+      --text: #1e272e;          /* لون نص داكن */
+      --card-bg: #ffffff;
+      --shadow: rgba(0,0,0,0.1);
+    }
 
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--secondary);
-    color: var(--text);
-    line-height: 1.6;
-  }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--secondary);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-  header {
-    background: #ffffff;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border-bottom: 2px solid var(--accent);
-  }
+    header {
+      background: linear-gradient(90deg, #ffffff 0%, #f0f9ff 100%);
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 20px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--accent);
+    }
 
-  h1 {
-    margin: 0;
-    color: var(--primary);
-    font-weight: 700;
-    font-size: 28px;
-  }
+    h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 30px;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
 
-  .btn {
-    background: var(--accent);
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
-  }
+    .btn {
+      background: var(--accent);
+      color: white;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
 
-  .btn:hover {
-    background: #45a494;
-    transform: translateY(-2px);
-  }
+    .btn:hover {
+      background: #1d8b7a;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px var(--shadow);
+    }
 
-  .hero {
-    padding: 80px 20px;
-    text-align: center;
-    background: linear-gradient(135deg, #dff6ff 0%, #ffffff 100%);
-    border-bottom: 3px solid var(--accent);
-  }
+    .hero {
+      padding: 100px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #d0f0fd 0%, #ffffff 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
 
-  .hero h2 {
-    font-size: 36px;
-    color: var(--primary);
-    margin-bottom: 15px;
-  }
+    .hero h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
 
-  .hero p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: auto;
-    color: #334155;
-  }
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: auto;
+      color: #34495e;
+    }
 
-  .section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-  .services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 25px;
-  }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
 
-  .card {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
+    .card {
+      background: var(--card-bg);
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-  }
+    .card::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      background: linear-gradient(120deg, transparent, var(--accent), transparent);
+      transition: all 0.5s ease;
+      z-index: 0;
+    }
 
-  .card h3 {
-    color: var(--primary);
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
+    .card:hover::before {
+      left: 0;
+    }
 
-  .card p {
-    color: #334155;
-    font-size: 16px;
-  }
+    .card h3 {
+      position: relative;
+      color: var(--primary);
+      font-size: 22px;
+      margin-bottom: 12px;
+      z-index: 1;
+    }
 
-  .category-title {
-    margin-top: 50px;
-    color: var(--primary);
-    border-right: 6px solid var(--accent);
-    padding-right: 12px;
-    font-size: 22px;
-    font-weight: 600;
-  }
+    .card p {
+      font-size: 16px;
+      color: #34495e;
+      position: relative;
+      z-index: 1;
+    }
 
-  .contact input, .contact textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    border: 1px solid #cbd5e1;
-    font-size: 16px;
-  }
+    .category-title {
+      margin-top: 60px;
+      color: var(--primary);
+      font-size: 24px;
+      font-weight: 700;
+      padding-right: 15px;
+      border-right: 6px solid var(--accent);
+    }
 
-  footer {
-    text-align: center;
-    padding: 25px;
-    background: #ffffff;
-    margin-top: 50px;
-    font-size: 14px;
-    color: #475569;
-    border-top: 2px solid var(--accent);
-  }
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
 
-  /* لمسات إضافية لجمالية علمية */
-  .section:nth-of-type(even) {
-    background: #f0faff;
-    border-radius: 20px;
-    margin: 40px 0;
-    padding: 60px 20px;
-  }
+    .contact input:focus, .contact textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      outline: none;
+    }
 
-</style>
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #ffffff;
+      margin-top: 60px;
+      font-size: 14px;
+      color: #475569;
+      border-top: 3px solid var(--accent);
+    }
+
+    /* تأثير تدرج على الأقسام بالتناوب */
+    .section:nth-of-type(even) {
+      background: #f0fcff;
+      border-radius: 20px;
+      margin: 50px 0;
+      padding: 80px 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>مشورة | Mashura</h1>
+  <button class="btn">احجز استشارة</button>
+</header>
+
+<section class="hero">
+  <h2>استشارات متخصصة</h2>
+  <p>نقدم حلولاً علمية متقدمة للأفراد والشركات والمؤسسات بإشراف أكاديمي متخصص.</p>
+</section>
+
+<section class="section">
+  <h2>خدماتنا</h2>
+
+  <h3 class="category-title">أولاً: خدمات الأفراد والباحثين</h3>
+  <div class="services">
+    <div class="card">
+      <h3>تصميم الأبحاث العلمية</h3>
+      <p>إعداد بروتوكولات بحث احترافية وتصميم التجارب المخبرية.</p>
+    </div>
+    <div class="card">
+      <h3>تحليل نتائج المختبر</h3>
+      <p>تفسير وتحليل نتائج التجارب بدقة.</p>
+    </div>
+    <div class="card">
+      <h3>دعم النشر العلمي</h3>
+      <p>مراجعة المقالات، اختيار المجلات المناسبة، والرد على تعليقات المحكمين.</p>
+    </div>
+  </div>
+
+  <h3 class="category-title">ثانياً: خدمات الشركات (Biotech & Pharma)</h3>
+  <div class="services">
+    <div class="card">
+      <h3>تطوير المنتجات</h3>
+      <p>تصميم دراسات لإثبات فعالية وسلامة المنتجات.</p>
+    </div>
+    <div class="card">
+      <h3>تصميم دراسات سريرية</h3>
+      <p>اختيار المؤشرات الحيوية المناسبة وتصميم التجارب السريرية.</p>
+    </div>
+    <div class="card">
+      <h3>استشارات البحث والتطوير</h3>
+      <p>تحسين بروتوكولات المختبر وتطوير استراتيجيات البحث.</p>
+    </div>
+  </div>
+
+  <h3 class="category-title">ثالثاً: خدمات الجامعات والمؤسسات</h3>
+  <div class="services">
+    <div class="card">
+      <h3>تطوير المناهج الأكاديمية</h3>
+      <p>تصميم وتحديث مناهج الفيسيولوجي والمناعة وفق أحدث المعايير العالمية.</p>
+    </div>
+    <div class="card">
+      <h3>تأسيس وحدات بحثية</h3>
+      <p>إنشاء معامل وأقسام بحثية متخصصة.</p>
+    </div>
+    <div class="card">
+      <h3>ورش عمل احترافية</h3>
+      <p>تنظيم دورات متقدمة في تصميم التجارب وتحليل البيانات البيولوجية.</p>
+    </div>
+  </div>
+
+  <h3 class="category-title">الباقات الاحترافية</h3>
+  <div class="services">
+    <div class="card">
+      <h3>باقة الباحث المتكاملة</h3>
+      <p>تصميم مشروع كامل + متابعة حتى النشر العلمي.</p>
+    </div>
+    <div class="card">
+      <h3>باقة المؤسسات المتقدمة</h3>
+      <p>تقييم شامل وخطة تطوير استراتيجية لمدة 3 أشهر.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="section contact">
+  <h2>تواصل معنا</h2>
+  <input type="text" placeholder="الاسم الكامل">
+  <input type="email" placeholder="البريد الإلكتروني">
+  <textarea rows="4" placeholder="رسالتك"></textarea>
+  <button class="btn">إرسال</button>
+</section>
+
+<footer>
+  © 2026 مشورة | Mashura. جميع الحقوق محفوظة.
+</footer>
+
+</body>
+</html>
